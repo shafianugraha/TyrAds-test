@@ -9,6 +9,30 @@ interface ProgressBarProps {
   gap?: string;
 }
 
+const ProgressBar: React.FC<ProgressBarProps> = ({
+  percent,
+  height,
+  color,
+  backgroundColor,
+  gap,
+}) => {
+  return (
+    <ProgressBarContainer
+      height={height}
+      backgroundColor={backgroundColor}
+    >
+      <Progress
+        percent={percent}
+        color={color}
+      />
+      <RemainingBar
+        percent={percent}
+        backgroundColor={backgroundColor}
+      />
+    </ProgressBarContainer>
+  );
+};
+
 const ProgressBarContainer = styled.div<{height?: string; backgroundColor?: string}>`
   display: flex;
   width: 100%;
@@ -34,29 +58,5 @@ const RemainingBar = styled.div<{percent: number; backgroundColor?: string}>`
   transition: flex 0.3s ease-in-out;
   border-radius: 4px;
 `;
-
-const ProgressBar: React.FC<ProgressBarProps> = ({
-  percent,
-  height,
-  color,
-  backgroundColor,
-  gap,
-}) => {
-  return (
-    <ProgressBarContainer
-      height={height}
-      backgroundColor={backgroundColor}
-    >
-      <Progress
-        percent={percent}
-        color={color}
-      />
-      <RemainingBar
-        percent={percent}
-        backgroundColor={backgroundColor}
-      />
-    </ProgressBarContainer>
-  );
-};
 
 export default ProgressBar;

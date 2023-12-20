@@ -2,13 +2,6 @@ import React from 'react';
 import styled from 'styled-components';
 import Image from 'next/image';
 
-const AvatarContainer = styled.div`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-  overflow: hidden;
-`;
-
 interface AvatarProps {
   src: string;
   alt: string;
@@ -28,5 +21,12 @@ const Avatar: React.FC<AvatarProps> = ({src, alt, size}) => {
     </AvatarContainer>
   );
 };
+
+const AvatarContainer = styled.div`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  overflow: hidden;
+`;
 
 export default Avatar;

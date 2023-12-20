@@ -11,30 +11,6 @@ interface TabsProps {
   children: ReactNode;
 }
 
-const TabContainer = styled.div`
-  display: flex;
-`;
-
-const TabButton = styled.button<{isActive: boolean}>`
-  padding: 10px;
-  margin: 0;
-  border: none;
-  color: black;
-  cursor: pointer;
-  background-color: transparent;
-  text-decoration: ${({isActive}) => (isActive ? 'underline' : 'none')};
-  font-weight: ${({isActive}) => (isActive ? 'bold' : 'normal')};
-
-  &:focus {
-    outline: none;
-  }
-`;
-
-const TabPanel = styled.div<{isActive: boolean}>`
-  display: ${({isActive}) => (isActive ? 'block' : 'none')};
-  width: 100%;
-`;
-
 const Tabs: React.FC<TabsProps> = ({children}) => {
   const [activeTab, setActiveTab] = useState(0);
 
@@ -80,5 +56,29 @@ const Tabs: React.FC<TabsProps> = ({children}) => {
     </div>
   );
 };
+
+const TabContainer = styled.div`
+  display: flex;
+`;
+
+const TabButton = styled.button<{isActive: boolean}>`
+  padding: 10px;
+  margin: 0;
+  border: none;
+  color: black;
+  cursor: pointer;
+  background-color: transparent;
+  text-decoration: ${({isActive}) => (isActive ? 'underline' : 'none')};
+  font-weight: ${({isActive}) => (isActive ? 'bold' : 'normal')};
+
+  &:focus {
+    outline: none;
+  }
+`;
+
+const TabPanel = styled.div<{isActive: boolean}>`
+  display: ${({isActive}) => (isActive ? 'block' : 'none')};
+  width: 100%;
+`;
 
 export default Tabs;

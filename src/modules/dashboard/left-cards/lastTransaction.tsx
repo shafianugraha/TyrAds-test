@@ -3,55 +3,56 @@ import React from 'react';
 import styled from 'styled-components';
 
 import List from '@/components/atoms/list';
-import Tabs, {TabProps} from '@/components/molecules/tab';
 import Card from '@/components/molecules/card';
-import Button from '@/components/atoms/button';
 import Typography from '@/components/atoms/typography';
-import AvatarCard from '@/components/molecules/avatar-card';
+import Tabs, {TabProps} from '@/components/molecules/tab';
+import TransactionItem from '@/components/molecules/transaction-item';
 
 const items = [
-  <AvatarCard
+  <TransactionItem
+    key={0}
+    avatar='/assets/images/bessie.png'
+    name='Bessie Cooper'
+    date='May 30, 2023 at 08:00 pm'
+    amount='-$3,000'
+  />,
+  <TransactionItem
     key={1}
-    src='/assets/images/online-store.png'
-    alt='online-store'
-    size={64}
-    title='Bessie Cooper'
-    subtitle='May 30, 2023 at 08:00 pm'
+    avatar='/assets/images/bessie.png'
+    name='Bessie Cooper'
+    date='May 30, 2023 at 08:00 pm'
+    amount='-$3,000'
   />,
-  <AvatarCard
+  <TransactionItem
     key={2}
-    src='/assets/images/online-store.png'
-    alt='online-store'
-    size={64}
-    title='Guy Hawkins'
-    subtitle='May 30, 2023 at 08:00 pm'
-  />,
-  <AvatarCard
-    key={3}
-    src='/assets/images/online-store.png'
-    alt='online-store'
-    size={64}
-    title='Floyd Miles'
-    subtitle='May 30, 2023 at 08:00 pm'
+    avatar='/assets/images/bessie.png'
+    name='Bessie Cooper'
+    date='May 30, 2023 at 08:00 pm'
+    amount='-$3,000'
   />,
 ];
 
 const items1 = [
-  <AvatarCard
-    key={2}
-    src='/assets/images/online-store.png'
-    alt='online-store'
-    size={64}
-    title='Guy Hawkins'
-    subtitle='May 30, 2023 at 08:00 pm'
+  <TransactionItem
+    key={0}
+    avatar='/assets/images/guy.png'
+    name='Guy Hawkins'
+    date='May 30, 2023 at 08:00 pm'
+    amount='+$5,000'
   />,
-  <AvatarCard
-    key={3}
-    src='/assets/images/online-store.png'
-    alt='online-store'
-    size={64}
-    title='Floyd Miles'
-    subtitle='May 30, 2023 at 08:00 pm'
+  <TransactionItem
+    key={1}
+    avatar='/assets/images/guy.png'
+    name='Guy Hawkins'
+    date='May 30, 2023 at 08:00 pm'
+    amount='+$5,000'
+  />,
+  <TransactionItem
+    key={2}
+    avatar='/assets/images/guy.png'
+    name='Guy Hawkins'
+    date='May 30, 2023 at 08:00 pm'
+    amount='+$5,000'
   />,
 ];
 

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Image from 'next/image';
 
@@ -8,6 +8,8 @@ import List from '@/components/atoms/list';
 import Card from '@/components/molecules/card';
 import Typography from '@/components/atoms/typography';
 import AvatarCard from '@/components/molecules/avatar-card';
+import FeatureNotAvailable from '@/components/organism/not-available-modal';
+import Button from '@/components/atoms/button';
 
 const items = [
   <AvatarCard
@@ -20,7 +22,7 @@ const items = [
   />,
   <AvatarCard
     key={2}
-    src='/assets/images/online-store.png'
+    src='/assets/images/hospital.png'
     alt='online-store'
     size={64}
     title='Pay the hospital'
@@ -28,7 +30,7 @@ const items = [
   />,
   <AvatarCard
     key={3}
-    src='/assets/images/online-store.png'
+    src='/assets/images/ticket.png'
     alt='online-store'
     size={64}
     title='Tickets'
@@ -37,17 +39,32 @@ const items = [
 ];
 
 const LatestSpending: React.FC = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleModal = () => {
+    setOpenModal(!openModal);
+  };
+
   return (
     <Card outlined>
+      <FeatureNotAvailable
+        isOpen={openModal}
+        onClose={handleModal}
+      />
       <CardContent>
         <Header>
           <Typography variant='h5'>Latest spending</Typography>
-          <Image
-            src='/assets/svg/ellipsis.svg'
-            alt='ellipsis'
-            width={16}
-            height={16}
-          />
+          <Button
+            tertiary
+            onClick={handleModal}
+          >
+            <Image
+              src='/assets/svg/ellipsis.svg'
+              alt='ellipsis'
+              width={16}
+              height={16}
+            />
+          </Button>
         </Header>
         <List listItems={items} />
       </CardContent>

@@ -14,19 +14,9 @@ import LatestSpending from './right-cards/latestSpending';
 import ExpensesIncome from './right-cards/expensesAndIncome';
 
 const Dashboard: React.FC = () => {
-  const handleHomeClick = () => {
-    console.log('Home clicked');
-  };
-
-  const sidebarItems = [
-    {label: 'Home', icon: 'assets/svg/home.svg', onClick: handleHomeClick},
-    {label: 'Users', icon: 'assets/svg/bell.svg', onClick: handleHomeClick},
-    {label: 'Settings', icon: 'assets/svg/clock.svg', onClick: handleHomeClick},
-  ];
-
   return (
     <Container>
-      <Sidebar items={sidebarItems} />
+      <Sidebar />
       <LeftWrapper>
         <Header />
         <TopLeftWrapper>

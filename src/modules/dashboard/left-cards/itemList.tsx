@@ -1,51 +1,66 @@
 import React, {useState} from 'react';
 
-import Image from 'next/image';
-
 import styled from 'styled-components';
 
 import Card from '@/components/molecules/card';
+import Button from '@/components/atoms/button';
 import Typography from '@/components/atoms/typography';
 import CheckboxCard from '@/components/molecules/checkbox-card';
+import FeatureNotAvailable from '@/components/organism/not-available-modal';
 
 const ItemList: React.FC = () => {
-  const [test, setTest] = useState(false);
+  const [openModal, setOpenModal] = useState(false);
+
+  const [shoppingList, setShoppingList] = useState({
+    MacBook: false,
+    Mouse: false,
+    Motorcycle: false,
+    Bicycle: false,
+    iPhone14ProMax: false,
+  });
+
+  const handleModal = () => {
+    setOpenModal(!openModal);
+  };
+
+  const handleCheckboxChange = (itemName: string) => {
+    setShoppingList((prevList) => ({
+      ...prevList,
+      [itemName]: !prevList[itemName],
+    }));
+  };
 
   return (
     <Card>
+      <FeatureNotAvailable
+        isOpen={openModal}
+        onClose={handleModal}
+      />
       <CardContent>
         <Typography variant='h5'>List of items to buy</Typography>
-        <DateContainer>
-          <Date>
-            <Typography variant='h4'>02:00</Typography>
-            <Typography
-              variant='subtitle1'
-              color='#a2a5ae'
-            >
-              Sat, August 12
-            </Typography>
-          </Date>
-          <Image
-            src='/assets/svg/chevron-right.svg'
-            alt='ellipsis'
-            width={16}
-            height={16}
-          />
-          <Date>
-            <Typography variant='h4'>05:00</Typography>
-            <Typography
-              variant='subtitle1'
-              color='#a2a5ae'
-            >
-              Sat, September 12
-            </Typography>
-          </Date>
-        </DateContainer>
-        <CheckboxCard
-          label='Mackbook'
-          checked={test}
-          onChange={() => setTest(!test)}
-        />
+        <DateContainer>{/* ... */}</DateContainer>
+        <ShoppingWrapper>
+          <Typography variant='body2'>
+            <span style={{color: '#a2a5ae'}}>0/3</span> Shopping list
+          </Typography>
+          <Button
+            tertiary
+            onClick={handleModal}
+          >
+            + Add new item
+          </Button>
+        </ShoppingWrapper>
+        <ShoppingList>
+          {Object.entries(shoppingList).map(([itemName, checked]) => (
+            <CheckboxCard
+              key={itemName}
+              label={itemName}
+              checked={checked}
+              onChange={() => handleCheckboxChange(itemName)}
+              onClick={handleModal}
+            />
+          ))}
+        </ShoppingList>
       </CardContent>
     </Card>
   );
@@ -69,6 +84,18 @@ const Date = styled.div`
   display: flex;
   flex-direction: column;
   gap: 8px;
+`;
+
+const ShoppingWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
+const ShoppingList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
 `;
 
 export default ItemList;

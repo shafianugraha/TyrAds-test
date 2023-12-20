@@ -5,7 +5,21 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   primary?: boolean;
   secondary?: boolean;
   tertiary?: boolean;
+  // onClick?: (event: MouseEvent) => void;
 }
+
+const Button: React.FC<ButtonProps> = ({children, primary, secondary, tertiary, ...rest}) => {
+  return (
+    <StyledButton
+      primary={primary}
+      secondary={secondary}
+      tertiary={tertiary}
+      {...rest}
+    >
+      {children}
+    </StyledButton>
+  );
+};
 
 const StyledButton = styled.button<ButtonProps>`
   padding: 24px 32px;
@@ -51,18 +65,5 @@ const StyledButton = styled.button<ButtonProps>`
     transform: scale(0.97);
   }
 `;
-
-const Button: React.FC<ButtonProps> = ({children, primary, secondary, tertiary, ...rest}) => {
-  return (
-    <StyledButton
-      primary={primary}
-      secondary={secondary}
-      tertiary={tertiary}
-      {...rest}
-    >
-      {children}
-    </StyledButton>
-  );
-};
 
 export default Button;

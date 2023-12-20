@@ -12,9 +12,10 @@ interface CheckboxCardProps {
   label: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
+  onClick: () => void;
 }
 
-const CheckboxCard: React.FC<CheckboxCardProps> = ({label, checked, onChange}) => {
+const CheckboxCard: React.FC<CheckboxCardProps> = ({label, checked, onChange, onClick}) => {
   return (
     <Card>
       <Checkbox
@@ -22,7 +23,10 @@ const CheckboxCard: React.FC<CheckboxCardProps> = ({label, checked, onChange}) =
         checked={checked}
         onChange={onChange}
       />
-      <Button tertiary>
+      <Button
+        tertiary
+        onClick={onClick}
+      >
         <Image
           src='/assets/svg/ellipsis.svg'
           alt='ellipsis'

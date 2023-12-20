@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 
 import Image from 'next/image';
 
@@ -7,10 +7,21 @@ import styled from 'styled-components';
 import Card from '@/components/molecules/card';
 import Button from '@/components/atoms/button';
 import Typography from '@/components/atoms/typography';
+import FeatureNotAvailable from '@/components/organism/not-available-modal';
 
 const PremiumCard: React.FC = () => {
+  const [openModal, setOpenModal] = useState(false);
+
+  const handleModal = () => {
+    setOpenModal(!openModal);
+  };
+
   return (
     <Card outlined>
+      <FeatureNotAvailable
+        isOpen={openModal}
+        onClose={handleModal}
+      />
       <CardContent>
         <Typography variant='h5'>Go to premium</Typography>
         <Image
@@ -28,7 +39,10 @@ const PremiumCard: React.FC = () => {
             Update your account to premium to get more features
           </Typography>
         </WordingWrapper>
-        <Button primary>
+        <Button
+          primary
+          onClick={handleModal}
+        >
           <Typography variant='h6'>Get now</Typography>
         </Button>
       </CardContent>
