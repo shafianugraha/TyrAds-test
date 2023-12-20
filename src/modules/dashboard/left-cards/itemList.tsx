@@ -8,10 +8,18 @@ import Typography from '@/components/atoms/typography';
 import CheckboxCard from '@/components/molecules/checkbox-card';
 import FeatureNotAvailable from '@/components/organism/not-available-modal';
 
+type ShoppingListType = {
+  MacBook: boolean;
+  Mouse: boolean;
+  Motorcycle: boolean;
+  Bicycle: boolean;
+  iPhone14ProMax: boolean;
+};
+
 const ItemList: React.FC = () => {
   const [openModal, setOpenModal] = useState(false);
 
-  const [shoppingList, setShoppingList] = useState({
+  const [shoppingList, setShoppingList] = useState<ShoppingListType>({
     MacBook: false,
     Mouse: false,
     Motorcycle: false,
@@ -23,7 +31,7 @@ const ItemList: React.FC = () => {
     setOpenModal(!openModal);
   };
 
-  const handleCheckboxChange = (itemName: string) => {
+  const handleCheckboxChange = (itemName: keyof ShoppingListType) => {
     setShoppingList((prevList) => ({
       ...prevList,
       [itemName]: !prevList[itemName],
@@ -56,7 +64,7 @@ const ItemList: React.FC = () => {
               key={itemName}
               label={itemName}
               checked={checked}
-              onChange={() => handleCheckboxChange(itemName)}
+              onChange={() => handleCheckboxChange(itemName as keyof ShoppingListType)}
               onClick={handleModal}
             />
           ))}
