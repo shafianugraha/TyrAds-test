@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -16,13 +16,11 @@ export const options = {
   responsive: true,
   scales: {
     x: {
-      // Display the grid lines on the x-axis
       grid: {
         display: false,
       },
     },
     y: {
-      // Display the grid lines on the y-axis
       grid: {
         display: false,
       },
@@ -40,7 +38,6 @@ export const options = {
 
 const labels = ['January', 'February', 'March', 'April', 'May', 'June', 'July'];
 
-// Replace this data with your own values
 const dataset1Data = [300, 450, 600, 800, 550, 700, 900];
 const dataset2Data = [450, 600, 750, 900, 650, 800, 1000];
 
@@ -61,12 +58,28 @@ export const data = {
 };
 
 export default function BarChart() {
+  const [chartWidth, setChartWidth] = useState(550);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setChartWidth(window.innerWidth * 0.8);
+    };
+
+    setChartWidth(window.innerWidth * 0.8);
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <Bar
       options={options}
       data={data}
-      width={700}
-      height={300}
+      width={chartWidth}
+      height={240}
     />
   );
 }

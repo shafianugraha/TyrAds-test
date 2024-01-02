@@ -33,8 +33,9 @@ const VirtualCard: React.FC<VirtualCardProps> = ({cardNumber, cardHolderName, ex
 };
 
 const VirtualCardContainer = styled.div`
-  width: 600px;
-  height: 356px;
+  width: 100%;
+  // max-width: 450px;
+  height: 296px;
   background: linear-gradient(135deg, #5060e1 50%, #4d4da9 50%);
   border-radius: 10px;
   padding: 20px;

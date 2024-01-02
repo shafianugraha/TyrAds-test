@@ -43,7 +43,8 @@ const Card = styled.div`
   padding: 16px;
   border-radius: 16px;
   width: fit-content;
-  min-width: 300px;
+  min-width: 200px;
+  max-width: 270px;
   display: flex;
   align-items: center;
   justify-content: space-between;

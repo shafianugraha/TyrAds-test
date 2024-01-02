@@ -71,7 +71,7 @@ const Sidebar: React.FC = () => {
 };
 
 const SidebarContainer = styled.div`
-  width: 250px;
+  width: 10%;
   min-height: 100vh;
   background-color: #fff;
   display: flex;
