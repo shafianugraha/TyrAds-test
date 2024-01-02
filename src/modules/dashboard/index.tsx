@@ -41,7 +41,6 @@ const Dashboard: React.FC = () => {
 
 const Container = styled.div`
   display: flex;
-  width: 100%;
   gap: 24px;
   min-height: 100vh;
 `;
@@ -50,7 +49,7 @@ const LeftWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 16px;
-  width: 100%;
+  width: 70%;
   padding: 24px;
 `;
 
